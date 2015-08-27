@@ -17,6 +17,8 @@ namespace Patch_Maker
         {
             InitializeComponent();
             PopulateTreeView();
+
+            this.treeViewFolders.NodeMouseClick += treeViewFolders_NodeMouseClick;
         }
 
         /// <summary>
@@ -61,6 +63,44 @@ namespace Patch_Maker
 
                 nodeToAddTo.Nodes.Add(aNode);
             }
+        }
+
+        private void treeViewFolders_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
+        {
+            TreeNode newSelected = e.Node;
+            listViewFiles.Items.Clear();
+            DirectoryInfo nodeDirInfo = (DirectoryInfo)newSelected.Tag;
+
+            ListViewItem.ListViewSubItem[] subItems;
+            ListViewItem item = null;
+
+            foreach (DirectoryInfo dir in nodeDirInfo.GetDirectories())
+            {
+                item = new ListViewItem(dir.Name, 0);
+                subItems = new ListViewItem.ListViewSubItem[]
+                {
+                    new ListViewItem.ListViewSubItem(item, "Directory"),
+                    new ListViewItem.ListViewSubItem(item, dir.LastAccessTime.ToShortDateString())
+                };
+
+                item.SubItems.AddRange(subItems);
+                listViewFiles.Items.Add(item);
+            }
+
+            foreach (FileInfo file in nodeDirInfo.GetFiles())
+            {
+                item = new ListViewItem(file.Name, 0);
+                subItems = new ListViewItem.ListViewSubItem[]
+                {
+                    new ListViewItem.ListViewSubItem(item, "File"),
+                    new ListViewItem.ListViewSubItem(item, file.LastAccessTime.ToShortDateString())
+                };
+
+                item.SubItems.AddRange(subItems);
+                listViewFiles.Items.Add(item);
+            }
+
+            listViewFiles.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
         }
     }
 }

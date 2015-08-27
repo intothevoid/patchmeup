@@ -31,13 +31,13 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(formMain));
             this.splitContainerMain = new System.Windows.Forms.SplitContainer();
-            this.statusStripMain = new System.Windows.Forms.StatusStrip();
-            this.imageListIcons = new System.Windows.Forms.ImageList(this.components);
             this.treeViewFolders = new System.Windows.Forms.TreeView();
+            this.imageListIcons = new System.Windows.Forms.ImageList(this.components);
             this.listViewFiles = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.statusStripMain = new System.Windows.Forms.StatusStrip();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).BeginInit();
             this.splitContainerMain.Panel1.SuspendLayout();
             this.splitContainerMain.Panel2.SuspendLayout();
@@ -61,21 +61,6 @@
             this.splitContainerMain.SplitterDistance = 334;
             this.splitContainerMain.TabIndex = 0;
             // 
-            // statusStripMain
-            // 
-            this.statusStripMain.Location = new System.Drawing.Point(0, 526);
-            this.statusStripMain.Name = "statusStripMain";
-            this.statusStripMain.Size = new System.Drawing.Size(1004, 22);
-            this.statusStripMain.TabIndex = 1;
-            this.statusStripMain.Text = "statusStrip1";
-            // 
-            // imageListIcons
-            // 
-            this.imageListIcons.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageListIcons.ImageStream")));
-            this.imageListIcons.TransparentColor = System.Drawing.Color.Transparent;
-            this.imageListIcons.Images.SetKeyName(0, "folder.png");
-            this.imageListIcons.Images.SetKeyName(1, "file.png");
-            // 
             // treeViewFolders
             // 
             this.treeViewFolders.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -86,6 +71,14 @@
             this.treeViewFolders.SelectedImageIndex = 0;
             this.treeViewFolders.Size = new System.Drawing.Size(334, 548);
             this.treeViewFolders.TabIndex = 0;
+            this.treeViewFolders.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.treeViewFolders_NodeMouseClick);
+            // 
+            // imageListIcons
+            // 
+            this.imageListIcons.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageListIcons.ImageStream")));
+            this.imageListIcons.TransparentColor = System.Drawing.Color.Transparent;
+            this.imageListIcons.Images.SetKeyName(0, "folder.png");
+            this.imageListIcons.Images.SetKeyName(1, "file.png");
             // 
             // listViewFiles
             // 
@@ -116,6 +109,14 @@
             // 
             this.columnHeader3.Text = "Last Modified";
             this.columnHeader3.Width = 200;
+            // 
+            // statusStripMain
+            // 
+            this.statusStripMain.Location = new System.Drawing.Point(0, 526);
+            this.statusStripMain.Name = "statusStripMain";
+            this.statusStripMain.Size = new System.Drawing.Size(1004, 22);
+            this.statusStripMain.TabIndex = 1;
+            this.statusStripMain.Text = "statusStrip1";
             // 
             // formMain
             // 
